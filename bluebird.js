@@ -38,9 +38,16 @@ discord_bot.on('message', (receivedMessage) => {
       // copy to numbered channels
       discord_bot.guilds.forEach((guild) => {
         guild.channels.forEach((channel) => {
+          // post to numbered channels
           if ((channel.name.match(/^\d+/)) && (guild.name == receivedMessage.guild.name)) {
             console.log(` -- ${channel.name} (${channel.type}) - ${channel.id}`)
             channel.send("R10T: " + receivedMessage.content)
+          }
+          // post to other bluebird channels
+          if ((channel.name == app_name) && (guild.name != receivedMessage.guild.name)) {
+            if (receivedMessage.author != discord_bot.user) {
+              channel.send(receivedMessage.content)
+            }
           }
         })
       })
