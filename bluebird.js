@@ -12,6 +12,13 @@ var discord = require('discord.js')
 var discord_bot = new discord.Client()
 discord_bot.login(bot_secret.bluebird_secret_token)
 
+// welcome messages
+var welcome_file = require('./conf/welcome.json')
+welcome = welcome_file.welcome
+
+var welcome_message = welcome.greeting
+var disclaimer = welcome.disclaimer
+
 // setup connection to the database
 var chan_bluebird
 discord_bot.on('ready', () => {
@@ -20,17 +27,30 @@ discord_bot.on('ready', () => {
 })
 
 discord_bot.on('message', (receivedMessage) => {
-    // copy all messages to the bluebird channel
-    // except messages in the bluebird channel
-    var msg_chan = receivedMessage.channel.name
-    if (msg_chan  == "bluebird") {
-
-    } else {
-      // limit to numbered channels
-      if (msg_chan.match(/^\d+/)) {
+  // copy all messages to the bluebird channel
+  // except messages in the bluebird channel
+  var msg_chan = receivedMessage.channel.name
+  if (msg_chan == "bluebird") {
+      // copy to numbered channels
+      discord_bot.guilds.forEach((guild) => {
+        guild.channels.forEach((channel) => {
+          if (channel.name.match(/^\d+/)) {
+            console.log(` -- ${channel.name} (${channel.type}) - ${channel.id}`)
+            channel.send("R10T: " + receivedMessage.content)
+          }
+        })
+      })
+  } else {
+    if (receivedMessage.author != discord_bot.user) {
+    // limit to numbered channels
+    if (msg_chan.match(/^\d+/)) {
+      // is not welcome message
+      if ((receivedMessage.content != welcome_message) && (receivedMessage.content != disclaimer)) { 
         chan_bluebird.send(receivedMessage.content)
       }
     }
+    }
+  }
 })
 
 // general functions
