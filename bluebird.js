@@ -38,7 +38,7 @@ discord_bot.on('message', (receivedMessage) => {
       // copy to numbered channels
       discord_bot.guilds.forEach((guild) => {
         guild.channels.forEach((channel) => {
-          if (channel.name.match(/^\d+/)) {
+          if ((channel.name.match(/^\d+/)) && (guild.name == receivedMessage.guild.name)) {
             console.log(` -- ${channel.name} (${channel.type}) - ${channel.id}`)
             channel.send("R10T: " + receivedMessage.content)
           }
