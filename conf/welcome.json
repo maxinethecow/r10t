@@ -1,6 +1,7 @@
 {
   "welcome": {
     "greeting": "Welcome to R10T. This communication is not secure but it is anonymous. Do not rely on it for secure communication. Communication through R10T is not logged but it may be logged or intercepted along the way.",
-    "disclaimer": "Messages you send will be broadcast to ALL members anonymously. You will receive messages from all members. Reply STOP to cancel."
+    "disclaimer": "Reply STOP to stop receiving messages. Reply DELETE to delete your data.",
+    "unsubscribe": "Your messages have been deleted."
   }
 }

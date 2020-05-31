@@ -4,6 +4,7 @@ var Botkit = require('botkit')
 const bot_secret = require('./lib/bot-secret')
 
 // load common bot functions
+var app_name = "bluebird"
 var bot = require('./lib/bot')
 var bluebird = new bot()
 
@@ -18,11 +19,14 @@ welcome = welcome_file.welcome
 
 var welcome_message = welcome.greeting
 var disclaimer = welcome.disclaimer
+var unsubscribe = welcome.unusbscribe
+
+var keywords = ["start","stop","delete","code"]
 
 // setup connection to the database
 var chan_bluebird
 discord_bot.on('ready', () => {
-    chan_bluebird = getDiscordChannelID("bluebird")
+    chan_bluebird = getDiscordChannelID(app_name)
     console.log("Bluebird channel: " + chan_bluebird.id)
 })
 
@@ -30,7 +34,7 @@ discord_bot.on('message', (receivedMessage) => {
   // copy all messages to the bluebird channel
   // except messages in the bluebird channel
   var msg_chan = receivedMessage.channel.name
-  if (msg_chan == "bluebird") {
+  if (msg_chan == app_name) {
       // copy to numbered channels
       discord_bot.guilds.forEach((guild) => {
         guild.channels.forEach((channel) => {
@@ -42,13 +46,36 @@ discord_bot.on('message', (receivedMessage) => {
       })
   } else {
     if (receivedMessage.author != discord_bot.user) {
-    // limit to numbered channels
-    if (msg_chan.match(/^\d+/)) {
-      // is not welcome message
-      if ((receivedMessage.content != welcome_message) && (receivedMessage.content != disclaimer)) { 
-        chan_bluebird.send(receivedMessage.content)
+      // limit to numbered channels
+      if (msg_chan.match(/^\d+/)) {
+        // is not welcome message
+        if ((receivedMessage.content != welcome_message) && (receivedMessage.content != disclaimer) && (receivedMessage.content != unsubscribe)) { 
+          // process stop request
+          var isKeyword = false
+          for (var i in keywords) {
+            if (receivedMessage.content.toLowerCase() == keywords[i]) {
+              isKeyword = true
+            }
+          }
+
+          if (receivedMessage.content.toLowerCase() == "delete") {
+            var delchan = receivedMessage.channel
+            receivedMessage.channel.send(unsubscribe)
+            delchan.delete()
+          }
+
+          if (!(isKeyword)) {
+            // post to all channels called "[app_name]"
+            discord_bot.guilds.forEach((guild) => {
+              guild.channels.forEach((channel) => {
+                if (channel.name.toLowerCase() == app_name) {
+                  channel.send(receivedMessage.content)
+                }
+              })
+            })
+          }
+        }
       }
-    }
     }
   }
 })
