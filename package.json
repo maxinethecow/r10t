@@ -1,0 +1,27 @@
+{
+  "name": "r10t",
+  "version": "1.0.0",
+  "description": "Disposable distributed messaging",
+  "main": "sms-bridge.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxinethecow/r10t.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maxinethecow/r10t/issues"
+  },
+  "homepage": "https://github.com/maxinethecow/r10t#readme",
+  "dependencies": {
+    "botkit": "^0.7.5",
+    "discord.js": "^11.4.2",
+    "mongodb": "^3.5.8",
+    "twilio": "^3.44.0",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^4.4.2"
+  }
+}
