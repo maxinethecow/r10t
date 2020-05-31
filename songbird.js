@@ -6,8 +6,8 @@ const bot_secret = require('./lib/bot-secret')
 // load common bot functions
 var bot = require('./lib/bot')
 var gopher = new bot()
-//var gopher_bot_id = "574100993743126528" // shouldn't be hardcoded but is
 var gopher_bot_id = "594672527486484480" // shouldn't be hardcoded but is
+var discord_server_name = "bluebird" // should also be in config file 
 
 // setup connection to twilio
 var twilio = Botkit.twiliosmsbot({
@@ -37,12 +37,16 @@ discord_bot.on('ready', () => {
 
     chan_general = getDiscordChannelID("welcome")
     console.log(chan_general.id)
-        discord_bot.guilds.forEach((guild) => {
-            // create a new discord channel and post first message  
-            // to the #welcome channel so it's not lost
-console.log(guild.name)
-        })
 
+    console.log("Servers:")
+    discord_bot.guilds.forEach((guild) => {
+        console.log(" - " + guild.name)
+
+        // List all channels
+        guild.channels.forEach((channel) => {
+            console.log(` -- ${channel.name} (${channel.type}) - ${channel.id}`)
+        })
+    })
 })
 
 discord_bot.on('message', (receivedMessage) => {
@@ -90,18 +94,19 @@ console.log("Phone Number: " + phone_number)
 
     // get channel matching user, create it if it doesn't exist
     var chan_user = getDiscordChannelID(phone_number)
+    var chan_welcome = getDiscordChannelID("welcome")
     if (!(chan_user)) {
-        discord_bot.guilds.forEach((guild) => {
-            // create a new discord channel and post first message  
-            // to the #welcome channel so it's not lost
-            if (guild.name == "catbot") {
-                console.log("Creating channel: " + phone_number)
-                var tmp_channel = createDiscordChannel(guild,phone_number).then(
-                    firstMessageToWelcomeChannel(phone_number,message.text)
-                )
-            }
-            console.log(guild.name)
-        })
+      // create a new discord channel and post first message  
+      // to the #welcome channel so it's not lost
+      // limit to the server specified in the config
+      discord_bot.guilds.forEach((guild) => {
+        if (guild.name == discord_server_name) {
+          console.log("Creating channel: " + phone_number)
+          var tmp_channel = createDiscordChannel(guild,phone_number).then(
+            firstMessageToWelcomeChannel(phone_number,message.text)
+          )
+        }
+      })
     } else {
         // channel exists already
         chan_user.send(message.text)
