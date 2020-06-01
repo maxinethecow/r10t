@@ -10,7 +10,7 @@ During periods of unrest civil liberties are usually suspended or even outright 
 
 ### What happens to messages when they are sent to R10T
 
-A message sent to R10T is anonymously copied to all members of the R10T server (people who have sent a text to a specific phone number). The R10T message is then syndicated to the R10T network where others may see it. R10T messages may be subscribed to over Discord, Twitter or other platforms. 
+A message sent to R10T is anonymously copied to all members of the R10T server (people who have sent a text to a specific phone number). The R10T message is then syndicated to the R10T network where others may see it. R10T messages may be subscribed to over Discord, Slack, Twitter or other platforms. 
 
 ### A note on security
 
