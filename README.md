@@ -2,7 +2,7 @@
 
 ## What is R10T
 
-R10T is a "[dead drop](https://en.wikipedia.org/wiki/Dead_drop)" for text messages. It allows you to send anonymized text messages to an anonymized group -- meaning that you don't know who you are sending to and they don't know who is sending the message. 
+R10T is a "[dead drop](https://en.wikipedia.org/wiki/Dead_drop)" for text messages. It allows you to send anonymized text messages to an anonymized group -- meaning that you don't know who you are sending to and they don't know who is sending the message. You don't even know how many people will read it.
 
 ## Why do I need it?
 
