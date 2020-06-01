@@ -28,7 +28,7 @@ https://discord.com/oauth2/authorize?client_id=716585130554163230&scope=bot
 
 * Linux VM
 * NodeJS
-* PM2 (npm install PM2 --global)
+* PM2 (npm install pm2 --global)
 
 The R10T server uses three bots all written in NodeJS. The bots can be deployed on any platform you choose but right now I have them deployed on a single Ubuntu 18.04 VM so the instructions will be written for that case. I'll create a Kubernetes version on gCloud for scalability but for right now this was the easiest way to do it. 
 
