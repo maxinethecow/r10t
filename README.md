@@ -60,11 +60,11 @@ Fill in the secret file with the API keys from Discord.
 
 > pm2 start songbird
 
-##### Note: Skip this step for standard configuration 
+#### Config File (/conf/settings.json)
 
-#### Enhanced privacy with FreeBird
-
-I have included a third bot called Freebird which deletes non-anonymized log files as they are created. automatically delete non-anonymized messages as they come in with an inverval specified in conf/settings.json. Installing Freebird will REMOVE the ability to moderate content and make your group more susceptible to infiltration. I do not recommend it unless you can tightly control membership to your R10T server. Freebird will NOT delete records kept by Discord such as archives or backups. It uses the API deleteMessage function documented here: https://discord.com/developers/docs/resources/channel#delete-message
+* discord_server_name: the name of your discord server
+* delete_after: FreeBird will delete messages from your discord server after this interval if configured
+* feedback: allow other discord servers to feed back to your R10T server
 
 #### Bot Permissions on Discord
 
@@ -73,6 +73,12 @@ I have included a third bot called Freebird which deletes non-anonymized log fil
 * Assign Blackbird, Bluebird and Freebird to the Bot role
 
 If you do NOT do this Freebird cannot delete messages and Blackbird cannot create channels (in short, the app won't work right). If your installation is not working and you feel like you have done everything right, check this step.
+
+##### Note: Skip this step for standard configuration 
+
+#### Enhanced privacy with FreeBird
+
+I have included a third bot called Freebird which deletes non-anonymized log files as they are created. automatically delete non-anonymized messages as they come in with an inverval specified in conf/settings.json. Installing Freebird will REMOVE the ability to moderate content and make your group more susceptible to infiltration. I do not recommend it unless you can tightly control membership to your R10T server. Freebird will NOT delete records kept by Discord such as archives or backups. It uses the API deleteMessage function documented here: https://discord.com/developers/docs/resources/channel#delete-message
 
 ### Run the bots
 
