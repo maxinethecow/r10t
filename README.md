@@ -18,9 +18,9 @@ R10T is not "secure" in the traditional sense. Messages are sent unencrypted and
 
 ### SIMPLE INSTALLATION: Install the R10T Client for Discord
 
-To intall the R10T client, create a discord server and invite the Bluebird bot to it. Create a channel called #bluebird and the Bluebird bot will place incoming R10T messages into it. Discord users may reply to R10T messages but they will NOT be seen by R10T users unless the R10T administrator has configured the "feedback" option (not enabled by default)
+To intall the R10T client, create a discord server and invite the BlueBird bot to it. Create a channel called #R10T or #bluebird and the BlueBird bot will place incoming R10T messages into it. Discord users may reply to R10T messages but they will NOT be seen by R10T users unless the R10T administrator has configured the "feedback" option (not enabled by default)
 
-To install the Bluebird bot on your discord server, use this link:
+To install the BlueBird bot on your discord server, use this link:
 
 https://discord.com/oauth2/authorize?client_id=716585130554163230&scope=bot
 
