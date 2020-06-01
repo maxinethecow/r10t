@@ -2,13 +2,15 @@ var Botkit = require('botkit')
 
 // load bot secret file
 const bot_secret = require('./lib/bot-secret')
+const app_settings = require('./conf/settings.json')
 
 // load common bot functions
 var app_name = bot_secret.discord_server_name
 var bot = require('./lib/bot')
 var freebird = new bot()
 
-var delete_after = 5000
+var delete_after = app_settings.settings.delete_after
+console.log(delete_after)
 
 //setup connection to discord
 var discord = require('discord.js')
