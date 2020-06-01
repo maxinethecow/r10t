@@ -32,23 +32,37 @@ https://discord.com/oauth2/authorize?client_id=716585130554163230&scope=bot
 
 The R10T server uses three bots all written in NodeJS. The bots can be deployed on any platform you choose but right now I have them deployed on a single Ubuntu 18.04 VM so the instructions will be written for that case. I'll create a Kubernetes version on gCloud for scalability but for right now this was the easiest way to do it. 
 
-#### Copy the example credential files
-
-cp ./lib/bot-secret.example.js ./lib/bot-secret.js
-
 #### Create a set of bots for your server
 
 Go to [Discord Applications](https://discord.com/developers/applications/) and create a new application called "BlueBird" (or whatever you'd like). Then go to "Bot" and click "Create Bot". From the "General Information" page copy the [CLIENT ID] and paste it into this link: 
 
 https://discord.com/oauth2/authorize?client_id=[CLIENT ID]&scope=bot
 
-#### Authorize your bot 
+#### Authorize your bots
 
 From the "Bot" page of Discord Applications, copy the secret token into /lib/bot-secret.js
 
-#### Repeat the steps and create a new Discord application called Blackbird
+##### Repeat the steps and create a new Discord application called Blackbird and again for FreeBird (if using)
 
-### Note: Skip this step for standard configuration 
+#### Copy the example credential files
+
+> cp ./lib/bot-secret.example.js ./lib/bot-secret.js
+> sudo nano ./lib/bot-secret.js
+
+Fill in the secret file with the API keys from Discord. 
+
+#### Integrate Twilio for SMS support with SongBird
+
+* Create a Twilio account
+* Create a new phone number
+* Setup texting on the new phone number to go to http://[server_ip]/sms/reply
+* Add your Twilio configuration to the bot-secret file
+
+> pm2 start songbird
+
+##### Note: Skip this step for standard configuration 
+
+#### Enhanced privacy with FreeBird
 
 I have included a third bot called Freebird which deletes non-anonymized log files as they are created. automatically delete non-anonymized messages as they come in with an inverval specified in conf/settings.json. Installing Freebird will REMOVE the ability to moderate content and make your group more susceptible to infiltration. I do not recommend it unless you can tightly control membership to your R10T server. Freebird will NOT delete records kept by Discord such as archives or backups. It uses the API deleteMessage function documented here: https://discord.com/developers/docs/resources/channel#delete-message
 
