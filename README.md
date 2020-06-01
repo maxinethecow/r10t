@@ -4,11 +4,19 @@
 
 R10T is a "[dead drop](https://en.wikipedia.org/wiki/Dead_drop)" for text messages. It allows you to send anonymized text messages to an anonymized group -- meaning that you don't know who you are sending to and they don't know who is sending the message. 
 
-### What happens to my messages when they are sent to R10T
+## Why do I need it?
 
-A message sent to R10T is copied to all members of the R10T server (people who have sent a text to a specific phone number). The R10T message is then syndicated to the Bluebird network where others may see it. R10T messages may be subscribed to over Discord, Twitter or other platforms. 
+During periods of unrest civil liberties are usually suspended or even outright removed. R10T allows you to communicate with a group of people without identifying the group and without keeping identifying records. This way you can't give away the participants of your group because you don't know who they are. For added protection all text messages should be sent through apps or burner phones. 
 
-### SIMPLE INSTALLATION: Install R10T for Discord
+### What happens to messages when they are sent to R10T
+
+A message sent to R10T is anonymously copied to all members of the R10T server (people who have sent a text to a specific phone number). The R10T message is then syndicated to the R10T network where others may see it. R10T messages may be subscribed to over Discord, Twitter or other platforms. 
+
+### A note on security
+
+R10T is not "secure" in the traditional sense. Messages are sent unencrypted and in plain text. The only security feature R10T explicitly provides is anonymization, however it provides an additional advantage: pop-up servers and disposable phone numbers. With R10T and Discord, you can create and switch between new phone numbers easily deleting whole servers and putting new ones up with only a change to the phone number. Message history can be turned off to provide additional layers of security. 
+
+### SIMPLE INSTALLATION: Install the R10T Client for Discord
 
 To intall the R10T client, create a discord server and invite the Bluebird bot to it. Create a channel called #bluebird and the Bluebird bot will place incoming R10T messages into it. Discord users may reply to R10T messages but they will NOT be seen by R10T users unless the R10T administrator has configured the "feedback" option (not enabled by default)
 
